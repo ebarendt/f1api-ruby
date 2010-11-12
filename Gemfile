@@ -1,2 +1,2 @@
-gem 'nokogiri'
+gem 'hpricot'
 gem 'oauth'

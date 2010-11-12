@@ -1,11 +1,11 @@
 GEM
   specs:
-    nokogiri (1.4.3.1)
+    hpricot (0.8.3)
     oauth (0.4.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  nokogiri
+  hpricot
   oauth
