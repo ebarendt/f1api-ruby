@@ -34,7 +34,10 @@ module FellowshipOneAPIClient # :nodoc:
     
     private
     
-    # Load the YAML file
+    # Loads the YAML file
+    #
+    # Starts by looking in current directory (.) and then your Rails.root and then the config 
+    # directory off of the base directory of the gem
     def self.load_yaml
       if File.exists? "./f1-oauth.yml"
         @config_yaml = YAML.load_file("./f1-oauth.yml")
