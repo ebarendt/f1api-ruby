@@ -1,9 +1,24 @@
 development:
   consumer_key: ""
   consumer_secret: ""
+  site_url: "https://{church_code}.staging.fellowshiponeapi.com"
+  # Store the church code if you are writing a 2nd Party implementation
+  # Otherwise, you'll want to ask for the church code from the user
+  church_code: "demo"
+  request_token_path: "/v1/Tokens/RequestToken"
+  access_token_path: "/v1/Tokens/AccessToken"
+  portal_authorize_path: "/v1/PortalUser/Login"
 test:
   consumer_key: ""
   consumer_secret: ""
+  site_url: "https://{church_code}.staging.fellowshiponeapi.com"
+  request_token_path: "/v1/Tokens/RequestToken"
+  access_token_path: "/v1/Tokens/AccessToken"
+  portal_authorize_path: "/v1/PortalUser/Login"
 production:
   consumer_key: ""
   consumer_secret: ""
+  site_url: "https://{church_code}.fellowshiponeapi.com"
+  request_token_path: "/v1/Tokens/RequestToken"
+  access_token_path: "/v1/Tokens/AccessToken"
+  portal_authorize_path: "/v1/PortalUser/Login"
