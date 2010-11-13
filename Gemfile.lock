@@ -8,4 +8,4 @@ PLATFORMS
 
 DEPENDENCIES
   hpricot
-  oauth
+  oauth (= 0.4.4)

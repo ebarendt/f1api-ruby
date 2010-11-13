@@ -1,2 +1,2 @@
 gem 'hpricot'
-gem 'oauth'
+gem 'oauth', '=0.4.4'
