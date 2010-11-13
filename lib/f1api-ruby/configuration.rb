@@ -1,3 +1,4 @@
+require 'bundler/setup'
 require 'yaml'
 
 module FellowshipOneAPIClient # :nodoc:
@@ -10,7 +11,12 @@ module FellowshipOneAPIClient # :nodoc:
     #              FellowshipTechAPIClient.Configuration["consumer_secret"] <i># "12345678-9abc-def0-1234-567890abcdef"</i>
     def self.[](value)
       load_yaml if @config_yaml.nil?
-      @config_yaml[self.environment][value]
+      val = @config_yaml[self.environment][value]
+      # if we have the string has "{church_code}" then we'll substitute it
+      if val =~ /\{church_code\}/ and value != "church_code"
+        return val.gsub("{church_code}", self["church_code"]) 
+      end
+      return val
     end
     
     # Gets the current environment

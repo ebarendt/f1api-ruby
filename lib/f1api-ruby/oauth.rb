@@ -1,4 +1,9 @@
+require 'bundler/setup'
 require 'oauth'
+require 'base64'
+require 'uri'
+
+OAuth::Consumer.
 
 module FellowshipOneAPIClient # :nodoc:
   # Wrapper around the OAuth v1.0 specification using the +oauth+ gem.
@@ -53,4 +58,3 @@ module FellowshipOneAPIClient # :nodoc:
     end
   end
 end
-    
