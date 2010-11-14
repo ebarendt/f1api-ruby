@@ -1,2 +1,4 @@
 doc/
 config/f1-oauth.yml
+.DS_Store
+.bundle/
