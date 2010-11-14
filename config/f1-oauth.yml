@@ -6,31 +6,40 @@ development:
   # Otherwise, you'll want to ask for the church code from the user
   church_code: ""
   request_token_path: "/v1/Tokens/RequestToken"
-  access_token_path: "/v1/Tokens/AccessToken"
-  # Use the following for credentials based authentication
-  # portal_credential_token_path: "/v1/PortalUser/AccessToken"
-  # weblink_credential_token_path: "/v1/WeblinkUser/AccessToken"
+  access_token_path: "/v1/Tokens/AccessToken" #OAuth only
+  # OAuth authentication vars
   portal_authorize_path: "/v1/PortalUser/Login"
   weblink_authorize_path: "/v1/WeblinkUser/Login"
+  # Use the following for credentials based authentication
+  portal_credential_token_path: "/v1/PortalUser/AccessToken"
+  weblink_credential_token_path: "/v1/WeblinkUser/AccessToken"
 test:
-  consumer_key: ""
-  consumer_secret: ""
+  consumer_key: "123456789"
+  consumer_secret: "12345678-90ab-cdef-0123-4567890abcde"
   site_url: "https://{church_code}.staging.fellowshiponeapi.com"
-  request_token_path: "/v1/Tokens/RequestToken"
-  access_token_path: "/v1/Tokens/AccessToken"
+  # Store the church code if you are writing a 2nd Party implementation
+  # Otherwise, you'll want to ask for the church code from the user
+  church_code: "test"
+  request_token_path: "/V1/Tokens/RequestToken"
+  access_token_path: "/V1/Tokens/AccessToken" #OAuth only
+  # OAuth authentication vars
+  portal_authorize_path: "/V1/PortalUser/Login"
+  weblink_authorize_path: "/V1/WeblinkUser/Login"
   # Use the following for credentials based authentication
-  # portal_credential_token_path: "/v1/PortalUser/AccessToken"
-  # weblink_credential_token_path: "/v1/WeblinkUser/AccessToken"
-  portal_authorize_path: "/v1/PortalUser/Login"
-  weblink_authorize_path: "/v1/WeblinkUser/Login"
+  portal_credential_token_path: "/V1/PortalUser/AccessToken"
+  weblink_credential_token_path: "/V1/WeblinkUser/AccessToken"
 production:
   consumer_key: ""
   consumer_secret: ""
   site_url: "https://{church_code}.fellowshiponeapi.com"
+  # Store the church code if you are writing a 2nd Party implementation
+  # Otherwise, you'll want to ask for the church code from the user
+  church_code: ""
   request_token_path: "/v1/Tokens/RequestToken"
-  access_token_path: "/v1/Tokens/AccessToken"
-  # Use the following for credentials based authentication
-  # portal_credential_token_path: "/v1/PortalUser/AccessToken"
-  # weblink_credential_token_path: "/v1/WeblinkUser/AccessToken"
+  access_token_path: "/v1/Tokens/AccessToken" #OAuth only
+  # OAuth authentication vars
   portal_authorize_path: "/v1/PortalUser/Login"
   weblink_authorize_path: "/v1/WeblinkUser/Login"
+  # Use the following for credentials based authentication
+  portal_credential_token_path: "/v1/PortalUser/AccessToken"
+  weblink_credential_token_path: "/v1/WeblinkUser/AccessToken"
