@@ -1,11 +1,16 @@
 GEM
+  remote: http://rubygems.org/
   specs:
     hpricot (0.8.3)
+    mocha (0.9.9)
+      rake
     oauth (0.4.4)
+    rake (0.8.7)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   hpricot
+  mocha
   oauth (= 0.4.4)
