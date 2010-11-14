@@ -6,6 +6,11 @@ module FellowshipOneAPIClient # :nodoc:
   # 
   # This class was written to take rails environment variables like +RAILS_ENV+ and +Rails.root+ into account
   class Configuration
+    # Explictly defines where the configuration file is
+    def self.file_path=(path)
+      @file_path
+    end
+    
     # Gets the specified key from the configuration file
     # [Example]    FellowshipTechAPIClient.Configuration["consumer_key"] <i># "2"</i><br />
     #              FellowshipTechAPIClient.Configuration["consumer_secret"] <i># "12345678-9abc-def0-1234-567890abcdef"</i>
@@ -42,10 +47,12 @@ module FellowshipOneAPIClient # :nodoc:
     
     # Loads the YAML file
     #
-    # Starts by looking in current directory (.) and then your Rails.root and then the config 
+    # Starts by looking to see if file_path is defined then checks in current directory (.) and then your Rails.root and then the config 
     # directory off of the base directory of the gem
     def self.load_yaml
-      if File.exists? "./f1-oauth.yml"
+      if not @file_path.nil?
+        @config_yaml = YAML.load_file(@file_path)
+      elsif File.exists? "./f1-oauth.yml"
         @config_yaml = YAML.load_file("./f1-oauth.yml")
       elsif defined? ::Rails
         @config_yaml = YAML.load_file("#{::Rails.root}/config/f1-oauth.yml")
