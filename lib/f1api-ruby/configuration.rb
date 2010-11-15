@@ -1,7 +1,7 @@
 require 'bundler/setup'
 require 'yaml'
 
-module FellowshipOneAPIClient # :nodoc:
+module FellowshipOneAPI # :nodoc:
   # This accesses the YAML-based F1 API config file
   # 
   # This class was written to take rails environment variables like +RAILS_ENV+ and +Rails.root+ into account

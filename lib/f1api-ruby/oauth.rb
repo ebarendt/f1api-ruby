@@ -3,7 +3,7 @@ require 'oauth'
 require 'base64'
 require 'uri'
 
-module FellowshipOneAPIClient # :nodoc:
+module FellowshipOneAPI # :nodoc:
   # Wrapper around the OAuth v1.0 specification using the +oauth+ gem.
   #
   # The Fellowship One API has two methods of authentication:
@@ -38,19 +38,19 @@ module FellowshipOneAPIClient # :nodoc:
     def load_consumer_config(type = :portal)
       case type
       when :portal
-        authorize_path = ::FellowshipOneAPIClient::Configuration.portal_authorize_path
+        authorize_path = ::FellowshipOneAPI::Configuration.portal_authorize_path
       when :weblink
-        authorize_path = ::FellowshipOneAPIClient::Configuration.weblink_authorize_path
+        authorize_path = ::FellowshipOneAPI::Configuration.weblink_authorize_path
       end
       
-      @oauth_consumer_key ||= ::FellowshipOneAPIClient::Configuration.consumer_key
-      @oauth_consumer_secret ||= ::FellowshipOneAPIClient::Configuration.consumer_secret
+      @oauth_consumer_key ||= ::FellowshipOneAPI::Configuration.consumer_key
+      @oauth_consumer_secret ||= ::FellowshipOneAPI::Configuration.consumer_secret
       
       @oauth_consumer = ::OAuth::Consumer.new(@oauth_consumer_key, 
                         @oauth_consumer_secret,
-                        {:site => ::FellowshipOneAPIClient::Configuration.site_url,
-                         :request_token_path => ::FellowshipOneAPIClient::Configuration.request_token_path,
-                         :access_token_path => ::FellowshipOneAPIClient::Configuration.access_token_path,
+                        {:site => ::FellowshipOneAPI::Configuration.site_url,
+                         :request_token_path => ::FellowshipOneAPI::Configuration.request_token_path,
+                         :access_token_path => ::FellowshipOneAPI::Configuration.access_token_path,
                          :authorize_path => authorize_path })
     end
     
@@ -69,7 +69,7 @@ module FellowshipOneAPIClient # :nodoc:
       # Gets a new request token and return the authorize URI
       # +type+:: Can be :portal or :weblink based on which credentials you want to authenticate against
       def authorize!(type = :portal)
-        load_consumer_config(type)
+        load_consumer_config(type) if oauth_consumer.nil?
         
         @oauth_request = oauth_consumer.get_request_token
         @oauth_authorize_url = oauth_request.authorize_url
@@ -135,9 +135,9 @@ module FellowshipOneAPIClient # :nodoc:
         
         case type
         when :portal
-          auth_url = ::FellowshipOneAPIClient::Configuration.portal_credential_token_path
+          auth_url = ::FellowshipOneAPI::Configuration.portal_credential_token_path
         when :weblink
-          auth_url = ::FellowshipOneAPIClient::Configuration.weblink_credential_token_path
+          auth_url = ::FellowshipOneAPI::Configuration.weblink_credential_token_path
         end
         
         response = oauth_consumer.request(:post, auth_url, nil, {}, "ec=#{cred}", {'Content-Type' => 'application/x-www-form-urlencoded'})
