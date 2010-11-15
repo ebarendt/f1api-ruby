@@ -1,0 +1,17 @@
+BASE_DIR = File.dirname(__FILE__)
+
+require 'bundler/setup'
+require 'test/unit'
+require 'mocha'
+require "#{BASE_DIR}/test/fixtures/request_token.rb"
+require "#{BASE_DIR}/test/fixtures/access_token.rb"
+require "#{BASE_DIR}/test/fixtures/http.rb"
+require "#{BASE_DIR}/lib/f1api"
+
+namespace :test do
+  task :run do
+    Dir["#{BASE_DIR}/test/unit/*.rb"].each do |test|
+      require test
+    end
+  end
+end
