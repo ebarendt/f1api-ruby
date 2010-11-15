@@ -23,7 +23,7 @@ For OAuth based authentication:
 For Credentials based authentication:
 
 	 require 'f1api'
-	 client = FellowshipOneAPI::Client.new {:auth_type => :credentials}
+	 client = FellowshipOneAPI::Client.new({:auth_type => :credentials})
  
 	 client.authorize! "username", "password"
 	 client.get '/v1/People/search.xml?searchFor=Smith'
