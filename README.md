@@ -16,14 +16,14 @@ For OAuth based authentication:
 	 client.authorize! # This gives the URL to go to and authenticate
  
 	 # after you have authenticated
-	 client.get\_access\_token
+	 client.get_access_token
  
 	 client.get '/v1/People/search.xml?searchFor=Smith'
 
 For Credentials based authentication:
 
 	 require 'f1api'
-	 client = FellowshipOneAPI::Client.new {:auth\_type => :credentials}
+	 client = FellowshipOneAPI::Client.new {:auth_type => :credentials}
  
 	 client.authorize! "username", "password"
 	 client.get '/v1/People/search.xml?searchFor=Smith'
