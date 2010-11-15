@@ -1,12 +1,3 @@
-require 'bundler/setup'
-require 'test/unit'
-require 'mocha'
-
-require "#{File.dirname(__FILE__)}/../fixtures/request_token.rb"
-require "#{File.dirname(__FILE__)}/../fixtures/access_token.rb"
-require "#{File.dirname(__FILE__)}/../../lib/f1api-ruby/oauth.rb"
-require "#{File.dirname(__FILE__)}/../../lib/f1api-ruby/configuration.rb"
-
 class OAuthAuthenticationTest
   include FellowshipOneAPI::OAuth::OAuthAuthentication
   attr_accessor :oauth_consumer

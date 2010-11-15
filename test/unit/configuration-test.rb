@@ -1,8 +1,3 @@
-require 'bundler/setup'
-require 'test/unit'
-require 'mocha'
-require "#{File.dirname(__FILE__)}/../../lib/f1api-ruby/configuration.rb"
-
 class OAuthTest < Test::Unit::TestCase
   include FellowshipOneAPI
   
