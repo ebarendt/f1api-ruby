@@ -1,10 +1,11 @@
 development:
   consumer_key: ""
   consumer_secret: ""
-  site_url: "https://{church_code}.staging.fellowshiponeapi.com"
+  site_url: "https://{church_code}.dc.fellowshiponeapi.com"
   # Store the church code if you are writing a 2nd Party implementation
   # Otherwise, you'll want to ask for the church code from the user
   church_code: ""
+  authentication_type: "oauth" #oauth or credentials
   request_token_path: "/v1/Tokens/RequestToken"
   access_token_path: "/v1/Tokens/AccessToken" #OAuth only
   # OAuth authentication vars
@@ -20,6 +21,7 @@ test:
   # Store the church code if you are writing a 2nd Party implementation
   # Otherwise, you'll want to ask for the church code from the user
   church_code: "test"
+  authentication_type: "oauth" #oauth or credentials
   request_token_path: "/V1/Tokens/RequestToken"
   access_token_path: "/V1/Tokens/AccessToken" #OAuth only
   # OAuth authentication vars
@@ -35,6 +37,7 @@ production:
   # Store the church code if you are writing a 2nd Party implementation
   # Otherwise, you'll want to ask for the church code from the user
   church_code: ""
+  authentication_type: "oauth" #oauth or credentials
   request_token_path: "/v1/Tokens/RequestToken"
   access_token_path: "/v1/Tokens/AccessToken" #OAuth only
   # OAuth authentication vars
