@@ -1,8 +1,3 @@
-require 'bundler/setup'
-require 'oauth'
-require 'base64'
-require 'uri'
-
 module FellowshipOneAPI # :nodoc:
   # Wrapper around the OAuth v1.0 specification using the +oauth+ gem.
   #
@@ -107,6 +102,8 @@ module FellowshipOneAPI # :nodoc:
             @tr_response
           end
         end
+        
+        oauth_authorize_url
       end
       
       # After a the user has been authenticated then we use the access token to access protected resources in the API.

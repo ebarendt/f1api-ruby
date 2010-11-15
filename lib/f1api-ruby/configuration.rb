@@ -1,6 +1,3 @@
-require 'bundler/setup'
-require 'yaml'
-
 module FellowshipOneAPI # :nodoc:
   # This accesses the YAML-based F1 API config file
   # 
