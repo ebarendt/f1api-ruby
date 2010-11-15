@@ -7,5 +7,9 @@ module FellowshipOneAPI
         extend OAuth::OAuthAuthentication
       end
     end
+    
+    def get(*args)
+      @oauth_access_token.get(*args)
+    end
   end
 end
