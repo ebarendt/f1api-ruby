@@ -18,7 +18,8 @@ class OAuthTest < Test::Unit::TestCase
   
   def test_portal_authorize!
     @oauth_test.oauth_consumer.expects(:get_request_token).returns(@mocked_request_token)
-    @oauth_test.authorize!
+    
+    assert_equal("#{Configuration.site_url}#{Configuration.portal_authorize_path}?oauth_token=request", @oauth_test.authorize!)
     
     assert_equal("request", @oauth_test.oauth_request.token)
     assert_equal("token", @oauth_test.oauth_request.secret)
