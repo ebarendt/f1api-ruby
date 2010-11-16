@@ -18,9 +18,10 @@ module FellowshipOneAPI # :nodoc:
     
         @oauth_request = oauth_consumer.get_request_token
         @oauth_authorize_url = oauth_request.authorize_url
-        # The token request reponse is scoped only in the token_request method, but I need to get access to the response
-        # headers so that I can pull back the Content-Location header and get the authenticated user URI
+
         @oauth_consumer.instance_eval do
+          # The token request reponse is scoped only in the token_request method, but I need to get access to the response
+          # headers so that I can pull back the Content-Location header and get the authenticated user URI
           def token_request(http_method, path, token = nil, request_options = {}, *arguments)
             @tr_response = request(http_method, path, token, request_options, *arguments)
             case @tr_response.code.to_i
@@ -47,7 +48,8 @@ module FellowshipOneAPI # :nodoc:
               @tr_response.error!
             end
           end
-
+          
+          # The HTTP response from token_request
           def token_request_response
             @tr_response
           end
