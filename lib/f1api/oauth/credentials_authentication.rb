@@ -16,9 +16,9 @@ module FellowshipOneAPI # :nodoc:
    
        case type
        when :portal
-         auth_url = ::FellowshipOneAPI::Configuration.portal_credential_token_path
+         auth_url = FellowshipOneAPI::Configuration.portal_credential_token_path
        when :weblink
-         auth_url = ::FellowshipOneAPI::Configuration.weblink_credential_token_path
+         auth_url = FellowshipOneAPI::Configuration.weblink_credential_token_path
        end
    
        response = @oauth_consumer.request(:post, auth_url, nil, {}, "ec=#{cred}", {'Content-Type' => 'application/x-www-form-urlencoded'})
