@@ -22,8 +22,16 @@ module FellowshipOneAPI # :nodoc:
        end
    
        response = @oauth_consumer.request(:post, auth_url, nil, {}, "ec=#{cred}", {'Content-Type' => 'application/x-www-form-urlencoded'})
+       
+       handle_response_code(response)
+       
+       # Gettting the URI of the authenticated user
+       @authenticated_user_uri = response["Content-Location"]
+     end
+ 
+     private
+     def handle_response_code(response)
        case response.code.to_i
-     
        when (200..299)
          @oauth_access_token = ::OAuth::AccessToken.from_hash(@oauth_consumer, parse_access_token(response.body))
        when (300..399)
@@ -35,11 +43,8 @@ module FellowshipOneAPI # :nodoc:
        else
          response.error!
        end
-       
-       @authenticated_user_uri = response["Content-Location"]
      end
- 
-     private
+     
      # Parse returned OAuth access token key/secret pair
      def parse_access_token(response)
        oauth_hash = {}
