@@ -9,7 +9,8 @@ module FellowshipOneAPI # :nodoc:
     end
     
     # Gets the specified key from the configuration file
-    # [Example]    FellowshipTechAPIClient.Configuration["consumer_key"] <i># "2"</i><br />
+    # [Example]    FellowshipTechAPIClient.Configuration["consumer_key"] <i># "2"</i>
+    #
     #              FellowshipTechAPIClient.Configuration["consumer_secret"] <i># "12345678-9abc-def0-1234-567890abcdef"</i>
     def self.[](value)
       load_yaml if @config_yaml.nil?

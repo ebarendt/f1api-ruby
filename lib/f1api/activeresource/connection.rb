@@ -1,6 +1,7 @@
-require 'hpricot'
+require 'nokogiri'
 
 module FellowshipOneAPI
+  # Creating a wrapper for the ActiveResource::Connection class
   class Connection < ActiveResource::Connection
     # Pass in a new connection to the API
     def initialize(f1api_connection, *args)
@@ -15,16 +16,24 @@ module FellowshipOneAPI
         super(method, path, *args)
       else
         response = @f1api_connection.request(method, path, *args)
-        h = response.body
+        
         if method == :get
-          res = (h.get_elements_by_tag_name("results")[0])
-          if not res.nil?
-            resource = ((path.split '/')[2]).downcase
-            response.body = h.to_s
-          end
+          transform_response response.body
         end
         handle_response(response)
       end
+    end
+    
+    # 
+    def transform_response(response_body)
+      n = Nokogiri::XML(response_body)
+      res = (n/"results")
+      if not (res.empty?)
+        resource = ((path.split '/')[2]).downcase
+        res[0].name = resource
+        response.body = n.to_s
+      end
+      
     end
   end
 end
