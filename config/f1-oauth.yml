@@ -4,7 +4,7 @@ development:
   site_url: "https://{church_code}.staging.fellowshiponeapi.com"
   # Store the church code if you are writing a 2nd Party implementation
   # Otherwise, you'll want to ask for the church code from the user
-  church_code: ""
+  church_code: "demo"
   authentication_type: "oauth" #oauth or credentials
   request_token_path: "/v1/Tokens/RequestToken"
   access_token_path: "/v1/Tokens/AccessToken" #OAuth only
