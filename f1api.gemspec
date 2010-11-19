@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{f1api}
-  s.version = "0.9.0"
+  s.version = "0.9.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jesse Dearing"]
@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "VERSION",
     "VERSION.yml",
     "config/f1-oauth.yml",
+    "f1api.gemspec",
     "lib/f1api.rb",
     "lib/f1api/activeresource/base.rb",
     "lib/f1api/activeresource/connection.rb",
