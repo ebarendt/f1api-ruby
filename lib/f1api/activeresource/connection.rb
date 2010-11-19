@@ -18,22 +18,22 @@ module FellowshipOneAPI
         response = @f1api_connection.request(method, path, *args)
         
         if method == :get
-          transform_response response.body
+          response.body = transform_response response.body, path
         end
         handle_response(response)
       end
     end
     
     # 
-    def transform_response(response_body)
+    def transform_response(response_body, path)
       n = Nokogiri::XML(response_body)
       res = (n/"results")
       if not (res.empty?)
         resource = ((path.split '/')[2]).downcase
         res[0].name = resource
-        response.body = n.to_s
       end
       
+      n.to_s
     end
   end
 end

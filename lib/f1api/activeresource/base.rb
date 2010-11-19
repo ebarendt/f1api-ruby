@@ -1,6 +1,7 @@
 module FellowshipOneAPI # :nodoc:
   # The Base class should be inherited by all model classes as it provides the facilities that the class will need
   class Base < ActiveResource::Base
+    self.site = "#{Configuration.site_url}/v1"
     # Creates a new connection
     # 
     # ==Examples
