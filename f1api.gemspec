@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
     "test/unit/credentials_test.rb",
     "test/unit/oauth_test.rb"
   ]
-  s.homepage = %q{http://github.com/jessedearing/f1api}
+  s.homepage = %q{http://github.com/jessedearing/f1api-ruby}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
