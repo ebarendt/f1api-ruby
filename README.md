@@ -9,22 +9,16 @@ This library is an implementation of the Fellowship One REST API.  Currently we 
 
 Usage
 -----
-For OAuth based authentication:
-
-	 require 'f1api'
-	 client = FellowshipOneAPI::Client.new
-	 client.authorize! # This gives the URL to go to and authenticate
- 
-	 # after you have authenticated
-	 client.get_access_token
- 
-	 client.get '/v1/People/search.xml?searchFor=Smith'
-
-For Credentials based authentication:
-
-	 require 'f1api'
-	 client = FellowshipOneAPI::Client.new({:auth_type => :credentials})
- 
-	 client.authorize! "username", "password"
-	 client.get '/v1/People/search.xml?searchFor=Smith'
-
+    require 'f1api'
+    
+    class Person < FellowshipOneAPI::Base
+		end
+		
+		client.authorize!
+		# If using creds in YAML file:
+		# client.authorize! "username", "password"
+		
+		Person.connect client
+		
+		Person.find(12345)
+		Person.find("search", {:searchFor => "Dearing", :include => "communications,addresses"})
