@@ -9,16 +9,16 @@ This library is an implementation of the Fellowship One REST API.  Currently we 
 
 Usage
 -----
-    require 'f1api'
-    
-    class Person < FellowshipOneAPI::Base
-		end
-		
-		client.authorize!
-		# If using creds in YAML file:
-		# client.authorize! "username", "password"
-		
-		Person.connect client
-		
-		Person.find(12345)
-		Person.find("search", {:searchFor => "Dearing", :include => "communications,addresses"})
+	require 'f1api'
+	
+	class Person < FellowshipOneAPI::Base
+	end
+	
+	client.authorize!
+	# If using creds in YAML file:
+	# client.authorize! "username", "password"
+	
+	Person.connect client
+	
+	Person.find(12345)
+	Person.find("search", {:searchFor => "Dearing", :include => "communications,addresses"})
