@@ -52,6 +52,10 @@ module FellowshipOneAPI
       if(args[:oauth_token] and args[:oauth_token_secret])
         @oauth_access_token = ::OAuth::AccessToken.from_hash(@oauth_consumer, args[:oauth_token], args[:oauth_token_secret])
       end
+      
+      if(args[:auth_username] and args[:auth_password])
+        authorize! args[:auth_username], args[:auth_password]
+      end
     end
     
     # Passes through the request to the OAuth library to be signed and set out HTTP
