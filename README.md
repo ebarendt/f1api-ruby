@@ -1,14 +1,37 @@
 Fellowship One REST API Ruby Client Library
 ===========================================
 
-**NOTE**: This library is of alpha quality.  It is not meant for use in production apps.  It's definitely not feature complete and it may have bugs.
-
 Introduction
 ------------
-This library is an implementation of the Fellowship One REST API.  Currently we are only fielding requests and handling the OAuth tokens.  The goal is to have a library that works like ActiveResource.
+This library is an implementation of the Fellowship One REST API.  The library currently abstracts the ActiveRecord class so it can be used to easily model data from the F1 REST API.
+
+Two Authentication Methods
+--------------------------
+The F1 REST API uses two methods to authenticate the user to the API: credentials for 2nd party and OAuth for 3rd party.  See the [F1 API Authentication documentation](http://developer.fellowshipone.com/docs/v1/Util/AuthDocs.help).
+
+### OAuth (2nd or 3rd Party)
+
+The Fellowship One API implements the OAuth v1.0 standard.  OAuth allows you to let Fellowship One handle the authentication and pass back the access tokens to a callback URL in your app.
+
+	client = FellowshipOneAPI::Client.new
+	# To be explicit: client = FellowshipOneAPI::Client.new({:auth_type => :oauth})
+	client.authorize!
+
+### Credentials (2nd Party)
+
+To authenticate against the API using credentials the default can be changed in the YAML configuration file or the method of authentication can be explicitly specified on the instantiation of the `FellowshipOneAPI::Client` class.  After that, the credentials of the user you are authenticating needs to be passed into the `authorize!` method.
+
+	client = FellowshipOneAPI::Client.new({:auth_type => :credentials})
+	client.authorize! "username", "password"
 
 Usage
 -----
+Install the gem:
+
+	gem install f1api
+
+Use it in your code:
+
 	require 'f1api'
 	
 	class Person < FellowshipOneAPI::Base
