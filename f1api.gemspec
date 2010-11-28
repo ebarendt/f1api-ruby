@@ -62,7 +62,6 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<nokogiri>, [">= 0"])
       s.add_runtime_dependency(%q<oauth>, ["= 0.4.4"])
-      s.add_runtime_dependency(%q<mocha>, [">= 0"])
       s.add_runtime_dependency(%q<activeresource>, [">= 0"])
       s.add_runtime_dependency(%q<oauth>, ["= 0.4.4"])
       s.add_development_dependency(%q<mocha>, [">= 0"])
