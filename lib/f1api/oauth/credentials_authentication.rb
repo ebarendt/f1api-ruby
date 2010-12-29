@@ -11,7 +11,6 @@ module FellowshipOneAPI # :nodoc:
      def authorize!(username, password, type = :portal)
        load_consumer_config(type) if @oauth_consumer.nil?
    
-       @oauth_request = @oauth_consumer.get_request_token
        cred = URI.encode(Base64.encode64("#{username} #{password}"))
    
        case type
