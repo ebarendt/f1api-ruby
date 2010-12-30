@@ -37,7 +37,6 @@ class CredentialsTest < Test::Unit::TestCase
     cred = URI.encode(Base64.encode64("#{@test_username} #{@test_password}"))
     @cred_test.oauth_consumer = nil
     @cred_test.load_consumer_config(:weblink)
-    @cred_test.oauth_consumer.expects(:get_request_token).returns(@mocked_request_token).at_least_once
     @cred_test.oauth_consumer.expects(:request).with(:post, ::FellowshipOneAPI::Configuration.weblink_credential_token_path,
                                                       nil, {}, "ec=#{cred}", {'Content-Type' => 'application/x-www-form-urlencoded'}).returns(
                                                       HttpFixture.new).at_least_once
