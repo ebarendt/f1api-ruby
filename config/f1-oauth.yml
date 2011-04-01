@@ -5,7 +5,7 @@ development:
   # Store the church code if you are writing a 2nd Party implementation
   # Otherwise, you'll want to ask for the church code from the user
   church_code: "demo"
-  authentication_type: "oauth" #oauth or credentials
+  authentication_type: "credentials" #oauth or credentials
   request_token_path: "/v1/Tokens/RequestToken"
   access_token_path: "/v1/Tokens/AccessToken" #OAuth only
   # OAuth authentication vars

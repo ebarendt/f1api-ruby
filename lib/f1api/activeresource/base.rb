@@ -14,6 +14,11 @@ module FellowshipOneAPI # :nodoc:
         @connection = Connection.new(client, client.consumer.site, format)
       end
     end
-    
+
+    def initialize(*args)
+      template = @connection.request :get, self.site + "/" + self.class.to_s.pluralize + "/New.json"
+      template = JSON.parse(template.body)
+      super(args)
+    end
   end
 end
