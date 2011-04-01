@@ -1,3 +1,5 @@
+require "#{File.dirname(__FILE__)}/../../lib/f1api/oauth/credentials_authentication"
+
 class CredentialsAuthenticationTest
   include FellowshipOneAPI::OAuth::CredentialsAuthentication
   attr_accessor :oauth_consumer

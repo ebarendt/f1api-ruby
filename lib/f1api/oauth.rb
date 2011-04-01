@@ -11,24 +11,24 @@ module FellowshipOneAPI # :nodoc:
     attr_accessor :oauth_consumer_key
     alias :consumer_key :oauth_consumer_key
     alias :consumer_key= :oauth_consumer_key=
-    
+
     # The OAuth consumer secret.
     # This will get set automatically from the YAML config file if not set explictly
     attr_accessor :oauth_consumer_secret
     alias :consumer_secret :oauth_consumer_secret
     alias :consumer_secret= :oauth_consumer_secret=
-     
+
     # The OAuth access token object where all requests are made off of
     attr_reader :oauth_access_token
     alias :access_token :oauth_access_token
-    
+
     # The OAuth consumer object
     attr_reader :oauth_consumer
     alias :consumer :oauth_consumer
-    
+
     # The URI for the resource of the authenticated user
     attr_reader :authenticated_user_uri
-    
+
     # Creates the OAuth consumer object
     def load_consumer_config(type = :portal)
       case type
@@ -37,10 +37,10 @@ module FellowshipOneAPI # :nodoc:
       when :weblink
         authorize_path = FellowshipOneAPI::Configuration.weblink_authorize_path
       end
-      
+
       @oauth_consumer_key ||= FellowshipOneAPI::Configuration.consumer_key
       @oauth_consumer_secret ||= FellowshipOneAPI::Configuration.consumer_secret
-      
+
       @oauth_consumer = ::OAuth::Consumer.new(@oauth_consumer_key, 
                         @oauth_consumer_secret,
                         {:site => FellowshipOneAPI::Configuration.site_url,
@@ -48,7 +48,5 @@ module FellowshipOneAPI # :nodoc:
                          :access_token_path => FellowshipOneAPI::Configuration.access_token_path,
                          :authorize_path => authorize_path })
     end
-    
- 
   end
 end
