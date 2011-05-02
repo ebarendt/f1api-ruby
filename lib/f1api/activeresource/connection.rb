@@ -1,4 +1,3 @@
-require 'nokogiri'
 module FellowshipOneAPI
   # Creating a wrapper for the ActiveResource::Connection class
   class Connection < ActiveResource::Connection
@@ -22,7 +21,6 @@ module FellowshipOneAPI
       end
     end
 
-    # 
     def transform_response(response_body, path)
       n = Nokogiri::XML(response_body)
       res = (n/"results")
