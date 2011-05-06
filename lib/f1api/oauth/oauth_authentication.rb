@@ -6,16 +6,16 @@ module FellowshipOneAPI # :nodoc:
       include OAuth
       # The OAuth request object
       attr_reader :oauth_request
-  
+
       # The OAuth authorization URI
       attr_reader :oauth_authorize_url
       alias :authorize_url :oauth_authorize_url
-  
-      # Gets a new request token and return the authorize URI
+
+      # Gets a new request token and return the authenticated URI
       # +type+:: Can be :portal or :weblink based on which credentials you want to authenticate against
-      def authorize!(type = :portal)
+      def authenticate!(type = :portal)
         load_consumer_config(type) if oauth_consumer.nil?
-    
+
         @oauth_request = oauth_consumer.get_request_token
         @oauth_authorize_url = oauth_request.authorize_url
 
@@ -57,6 +57,7 @@ module FellowshipOneAPI # :nodoc:
     
         oauth_authorize_url
       end
+      alias :authorize! :authenticate!
   
       # After a the user has been authenticated then we use the access token to access protected resources in the API.
       # Since the authentication has taken place, we now know about the user that authenticated and 
