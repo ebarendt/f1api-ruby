@@ -13,35 +13,36 @@ The F1 REST API uses two methods to authenticate the user to the API: credential
 
 The Fellowship One API implements the OAuth v1.0 standard.  OAuth allows you to let Fellowship One handle the authentication and pass back the access tokens to a callback URL in your app.
 
-  client = FellowshipOneAPI::Client.new
-  # To be explicit: client = FellowshipOneAPI::Client.new({:auth_type => :oauth})
-  client.authorize!
+    client = FellowshipOneAPI::Client.new
+    # To be explicit: client = FellowshipOneAPI::Client.new({:auth_type => :oauth})
+    client.authorize!
 
 ### Credentials (2nd Party)
 
 To authenticate against the API using credentials the default can be changed in the YAML configuration file or the method of authentication can be explicitly specified on the instantiation of the `FellowshipOneAPI::Client` class.  After that, the credentials of the user you are authenticating needs to be passed into the `authorize!` method.
 
-  client = FellowshipOneAPI::Client.new({:auth_type => :credentials})
-  client.authorize! "username", "password"
+    client = FellowshipOneAPI::Client.new({:auth_type => :credentials})
+    client.authorize! "username", "password"
 
 Usage
 -----
 Install the gem:
 
-  gem install f1api
+    gem install f1api
 
 Use it in your code:
 
-  require 'f1api'
+    require 'f1api'
 
-  class Person < FellowshipOneAPI::Base
-  end
+    class Person < FellowshipOneAPI::Base
+    end
 
-  client.authorize!
-  # If using creds in YAML file:
-  # client.authorize! "username", "password"
+    client.authorize!
+    # If using creds in YAML file:
+    # client.authorize! "username", "password"
 
-  Person.connect client
+    FellowshipOneAPI::Base.connect client
 
-  Person.find(12345)
-  Person.find(:search, :params => {:searchFor => "Dearing", :include => "communications,addresses"})
+    Person.find(12345)
+    Person.find(:search, :params => {:searchFor => "Dearing", :include => "communications,addresses"})
+
