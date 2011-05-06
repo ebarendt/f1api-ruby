@@ -77,7 +77,6 @@ module FellowshipOneAPI
 
     # Passes through the request to the OAuth library to be signed and set out HTTP
     def request(*args)
-      puts args.inspect
       @oauth_access_token.request(*args)
     end
   end
