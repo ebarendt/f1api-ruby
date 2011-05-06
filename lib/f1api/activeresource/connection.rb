@@ -27,8 +27,16 @@ module FellowshipOneAPI
       json = JSON.parse(response_body)
       if json.keys.first == "results"
         json = json["results"]
+        key = json.keys.find {|k| k[0] != '@'}
+        key = key.first if key.is_a? Enumerator
+        ret = []
+        json[key].each do |person|
+          ret << person
+        end
+        JSON.dump({"people" => ret})
+      else
+        JSON.dump(json[json.keys.first])
       end
-      JSON.dump(json[json.keys.first])
     end
   end
 end
