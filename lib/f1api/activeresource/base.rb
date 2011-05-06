@@ -14,5 +14,9 @@ module FellowshipOneAPI # :nodoc:
       end
     end
 
+    # Setting site from configuration
+    self.site = "#{FellowshipOneAPI::Configuration.site_url}/v1"
+    # Setting mode to JSON
+    self.format = :json
   end
 end

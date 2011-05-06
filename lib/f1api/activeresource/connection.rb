@@ -1,3 +1,5 @@
+require 'json'
+
 module FellowshipOneAPI
   # Creating a wrapper for the ActiveResource::Connection class
   class Connection < ActiveResource::Connection
@@ -22,14 +24,11 @@ module FellowshipOneAPI
     end
 
     def transform_response(response_body, path)
-      n = Nokogiri::XML(response_body)
-      res = (n/"results")
-      if not (res.empty?)
-        resource = ((path.split '/')[2]).downcase
-        res[0].name = resource
+      json = JSON.parse(response_body)
+      if json.keys.first == "results"
+        json = json["results"]
       end
-
-      n.to_s
+      JSON.dump(json[json.keys.first])
     end
   end
 end
