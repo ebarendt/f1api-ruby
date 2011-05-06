@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{f1api}
-  s.version = "0.9.4"
+  s.version = "0.9.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jesse Dearing"]
@@ -45,14 +45,6 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.7.2}
   s.summary = %q{Consume the Fellowship One API in your apps using ActiveResource}
-  s.test_files = [
-    "test/fixtures/access_token.rb",
-    "test/fixtures/http.rb",
-    "test/fixtures/request_token.rb",
-    "test/unit/configuration_test.rb",
-    "test/unit/credentials_test.rb",
-    "test/unit/oauth_test.rb"
-  ]
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
