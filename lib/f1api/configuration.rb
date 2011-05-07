@@ -71,7 +71,7 @@ module FellowshipOneAPI # :nodoc:
           elsif File.exists? "./f1-oauth.yml"
             @config_yaml = YAML.load_file("./f1-oauth.yml")
           elsif defined? ::Rails
-            @config_yaml = YAML.load_file("#{::Rails.root}/config/f1-oauth.yml")
+            @config_yaml = YAML.load_file("#{::Rails.root.to_s}/config/f1-oauth.yml")
           else
             path = File.dirname(__FILE__) + "/../../config/f1-oauth.yml"
             @config_yaml = YAML.load_file(path)
