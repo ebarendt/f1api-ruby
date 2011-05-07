@@ -20,9 +20,9 @@ Gem::Specification.new do |s|
 
   if s.respond_to? :specification_version
     s.specification_version = 3
-    s.add_runtime_dependency('oauth', "=0.4.4")
+    s.add_runtime_dependency('oauth', "0.4.4")
     s.add_runtime_dependency('activeresource')
-    s.add_runtime_dependency('oauth', "=0.4.4")
+    s.add_runtime_dependency('oauth', "0.4.4")
     s.add_development_dependency('mocha')
     s.add_runtime_dependency('activeresource')
   end
