@@ -48,9 +48,9 @@ module FellowshipOneAPI
       end
 
       if(args[:auth_against])
-        load_consumer_config args[:auth_against]
+        load_consumer_config args[:auth_against], args[:site_url]
       else
-        load_consumer_config
+        load_consumer_config :portal, args[:site_url]
       end
 
       if(args[:oauth_token] and args[:oauth_token_secret])

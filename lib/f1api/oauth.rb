@@ -30,7 +30,7 @@ module FellowshipOneAPI # :nodoc:
     attr_reader :authenticated_user_uri
 
     # Creates the OAuth consumer object
-    def load_consumer_config(type = :portal)
+    def load_consumer_config(type = :portal, site_url = nil)
       case type
       when :portal
         authorize_path = FellowshipOneAPI::Configuration.portal_authorize_path
@@ -41,9 +41,10 @@ module FellowshipOneAPI # :nodoc:
       @oauth_consumer_key ||= FellowshipOneAPI::Configuration.consumer_key
       @oauth_consumer_secret ||= FellowshipOneAPI::Configuration.consumer_secret
 
-      @oauth_consumer = ::OAuth::Consumer.new(@oauth_consumer_key, 
+      url = site_url.nil? ? FellowshipOneAPI::Configuration.site_url : site_url
+      @oauth_consumer = ::OAuth::Consumer.new(@oauth_consumer_key,
                         @oauth_consumer_secret,
-                        {:site => FellowshipOneAPI::Configuration.site_url,
+                        {:site => url,
                          :request_token_path => FellowshipOneAPI::Configuration.request_token_path,
                          :access_token_path => FellowshipOneAPI::Configuration.access_token_path,
                          :authorize_path => authorize_path })

@@ -72,5 +72,4 @@ class OAuthTest < Test::Unit::TestCase
     @oauth_test.authorize!
     assert_equal("#{Configuration.site_url}#{Configuration.weblink_authorize_path}", @oauth_test.oauth_consumer.authorize_url)
   end
-  
 end
