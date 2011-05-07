@@ -42,7 +42,6 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency('oauth', ">= 0.4.4")
   s.add_runtime_dependency('activeresource')
-  s.add_runtime_dependency('oauth', ">= 0.4.4")
   s.add_development_dependency('mocha')
   s.add_runtime_dependency('activeresource')
 end
