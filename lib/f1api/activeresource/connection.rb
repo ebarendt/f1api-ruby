@@ -26,14 +26,15 @@ module FellowshipOneAPI
     def transform_response(response_body, path)
       json = JSON.parse(response_body)
       if json.keys.first == "results"
-        json = json["results"]
-        key = json.keys.find {|k| k[0] != '@'}
-        key = key.first if key.is_a? Enumerator
-        ret = []
-        json[key].each do |person|
-          ret << person
+        results = json["results"]["person"]
+        (json["results"].keys.find_all {|key| key[0] == '@' && key != '@array'}).each do |key|
+          results.each do |result|
+            result.merge!({key => json["results"][key]})
+          end
         end
-        JSON.dump({"people" => ret})
+        JSON.dump(results)
+      elsif !json[json.keys.first][json.keys.first.singularize].nil?
+        JSON.dump(json[json.keys.first][json.keys.first.singularize])
       else
         JSON.dump(json[json.keys.first])
       end
