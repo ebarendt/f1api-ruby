@@ -19,7 +19,7 @@ module FellowshipOneAPI # :nodoc:
     alias :consumer_secret= :oauth_consumer_secret=
 
     # The OAuth access token object where all requests are made off of
-    attr_reader :oauth_access_token
+    attr_accessor :oauth_access_token
     alias :access_token :oauth_access_token
 
     # The OAuth consumer object
