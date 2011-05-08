@@ -15,14 +15,20 @@ The Fellowship One API implements the OAuth v1.0 standard.  OAuth allows you to 
 
     client = FellowshipOneAPI::Client.new
     # To be explicit: client = FellowshipOneAPI::Client.new({:auth_type => :oauth})
-    client.authorize!
+    client.authenticate!
 
 ### Credentials (2nd Party)
 
-To authenticate against the API using credentials the default can be changed in the YAML configuration file or the method of authentication can be explicitly specified on the instantiation of the `FellowshipOneAPI::Client` class.  After that, the credentials of the user you are authenticating needs to be passed into the `authorize!` method.
+To authenticate against the API using credentials the default can be changed in the YAML configuration file or the method of authentication can be explicitly specified on the instantiation of the `FellowshipOneAPI::Client` class.  After that, the credentials of the user you are authenticating needs to be passed into the `authenticate!` or `authenticate` method. `authenticate!` will throw an exception if unable to log in, while `authenticate` will return true or false depending on if authentication was successful.
+
+**NOTE**: `authenticate` is only available for 2nd party authentication.
 
     client = FellowshipOneAPI::Client.new({:auth_type => :credentials})
-    client.authorize! "username", "password"
+    if(client.authenticate "username", "password")
+      # log user in
+    else
+      # display error
+    end
 
 Usage
 -----
@@ -37,9 +43,9 @@ Use it in your code:
     class Person < FellowshipOneAPI::Base
     end
 
-    client.authorize!
+    client.authenticate!
     # If using creds in YAML file:
-    # client.authorize! "username", "password"
+    # client.authenticate! "username", "password"
 
     FellowshipOneAPI::Base.connect client
 
