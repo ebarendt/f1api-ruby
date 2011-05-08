@@ -29,6 +29,7 @@ module FellowshipOneAPI # :nodoc:
           return false
         end
         handle_response_code(response)
+        @authenticated_user_uri = response["Content-Location"]
         return true
       end
       alias :authorize :authenticate
