@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
     test/unit/credentials_test.rb
     test/unit/oauth_test.rb
   ]
-  s.homepage = %q{http://github.com/jessedearing/f1api}
+  s.homepage = "http://github.com/fellowshiptech/f1api-ruby"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.summary = %q{Consume the Fellowship One API in your apps using ActiveResource}
