@@ -14,6 +14,14 @@ module FellowshipOneAPI # :nodoc:
       end
     end
 
+    def id
+      self.attributes["@id"]
+    end
+
+    def new?
+      self.attributes["@id"].nil?
+    end
+
     # Setting site from configuration
     self.site = "#{FellowshipOneAPI::Configuration.site_url}/v1"
     # Setting mode to JSON
