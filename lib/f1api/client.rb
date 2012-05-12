@@ -38,7 +38,7 @@ module FellowshipOneAPI
     # [+:oauth_token+] - The access token
     # [+:oauth_token_secret+] - The access token secret
     def initialize(args = {})
-      args[:auth_type] ||= Configuration.authentication_type.to_sym
+      args[:auth_type] ||= FellowshipOneAPI.authentication_type.to_sym
       if args[:auth_type] == :credentials
         require "#{File.dirname(__FILE__)}/oauth/credentials_authentication"
         extend OAuth::CredentialsAuthentication

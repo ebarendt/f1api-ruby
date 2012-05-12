@@ -21,6 +21,11 @@ module FellowshipOneAPI
       @authentication_type || :oauth
     end
 
+    def site_url
+      return nil unless @site_url
+      @site_url.sub('{church_code}', self.church_code)
+    end
+
     private
     def load_values_from_yml_file
       return unless config_file_path
