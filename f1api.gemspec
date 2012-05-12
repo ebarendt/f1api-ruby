@@ -43,6 +43,9 @@ Gem::Specification.new do |s|
   s.summary = %q{FellowshipOne API wrapper}
 
   s.add_runtime_dependency('oauth', "~> 0.4.6")
+  s.add_runtime_dependency('faraday')
+  s.add_runtime_dependency('faraday_middleware')
+
   s.add_development_dependency('rspec')
 end
 
