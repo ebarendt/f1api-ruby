@@ -48,17 +48,17 @@ module FellowshipOneAPI # :nodoc:
               @tr_response.error!
             end
           end
-          
+
           # The HTTP response from token_request
           def token_request_response
             @tr_response
           end
         end
-    
+
         oauth_authorize_url
       end
       alias :authorize! :authenticate!
-  
+
       # After a the user has been authenticated then we use the access token to access protected resources in the API.
       # Since the authentication has taken place, we now know about the user that authenticated and 
       # have a URI to the record of that user.

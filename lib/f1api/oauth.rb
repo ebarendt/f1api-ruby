@@ -33,20 +33,20 @@ module FellowshipOneAPI # :nodoc:
     def load_consumer_config(type = :portal, site_url = nil)
       case type
       when :portal
-        authorize_path = FellowshipOneAPI::Configuration.portal_authorize_path
+        authorize_path = FellowshipOneAPI.portal_authorize_path || "/v1/PortalUser/Login"
       when :weblink
-        authorize_path = FellowshipOneAPI::Configuration.weblink_authorize_path
+        authorize_path = FellowshipOneAPI.weblink_authorize_path || "/v1/WeblinkUser/Login"
       end
 
-      @oauth_consumer_key ||= FellowshipOneAPI::Configuration.consumer_key
-      @oauth_consumer_secret ||= FellowshipOneAPI::Configuration.consumer_secret
+      @oauth_consumer_key ||= FellowshipOneAPI.consumer_key
+      @oauth_consumer_secret ||= FellowshipOneAPI.consumer_secret
 
-      url = site_url.nil? ? FellowshipOneAPI::Configuration.site_url : site_url
+      url = site_url || FellowshipOneAPI.site_url
       @oauth_consumer = ::OAuth::Consumer.new(@oauth_consumer_key,
                         @oauth_consumer_secret,
                         {:site => url,
-                         :request_token_path => FellowshipOneAPI::Configuration.request_token_path,
-                         :access_token_path => FellowshipOneAPI::Configuration.access_token_path,
+                         :request_token_path => FellowshipOneAPI.request_token_path || "/v1/Tokens/RequestToken",
+                         :access_token_path => FellowshipOneAPI.access_token_path || "/v1/Tokens/AccessToken",
                          :authorize_path => authorize_path })
     end
   end

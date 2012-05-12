@@ -1,6 +1,6 @@
 module FellowshipOneAPI # :nodoc:
   module OAuth
-  # Implements the Credentials method of authentication.  You must manage the credentials.
+  # Implements the Credentials method of authentication.
     module CredentialsAuthentication
       include OAuth
       # Authenticates a user and throws and error if unable
@@ -57,9 +57,9 @@ module FellowshipOneAPI # :nodoc:
 
         case type
         when :portal
-          auth_url = FellowshipOneAPI::Configuration.portal_credential_token_path
+          auth_url = FellowshipOneAPI.portal_credential_token_path || "/v1/PortalUser/AccessToken"
         when :weblink
-          auth_url = FellowshipOneAPI::Configuration.weblink_credential_token_path
+          auth_url = FellowshipOneAPI.weblink_credential_token_path || "/v1/WeblinkUser/AccessToken"
         end
 
         @oauth_consumer.request(:post, auth_url, nil, {}, "ec=#{cred}", {'Content-Type' => 'application/x-www-form-urlencoded'})
